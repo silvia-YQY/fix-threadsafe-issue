@@ -2,6 +2,12 @@ package com.github.hcsp.multithread;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Second method to solve this problem
+ * Use AtomicInteger
+ */
+
+
 public class Counter1 {
 
     AtomicInteger value = new AtomicInteger(0);
@@ -17,15 +23,6 @@ public class Counter1 {
 
     // 减去一个整数i，并返回减之后的结果
     public int minusAndGet(int i) {
-        return value.get() - i;
-    }
-
-    public static void main(String[] args) {
-        Counter1 counter = new Counter1();
-        for (int i = 0; i < 100; i++) {
-            counter.addAndGet(2);
-            counter.minusAndGet(2);
-        }
-        System.out.println(counter.value);
+        return value.addAndGet(-i);
     }
 }
