@@ -1,40 +1,21 @@
 package com.github.hcsp.multithread;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Counter {
-    // Use AtomicInteger
-
-    private AtomicInteger value = new AtomicInteger(0);
+    private int value = 0;
 
     public int getValue() {
-        return value.get();
+        return value;
     }
 
     // 加上一个整数i，并返回加之后的结果
     public int addAndGet(int i) {
-        return value.addAndGet(i);
+        value += i;
+        return value;
     }
 
     // 减去一个整数i，并返回减之后的结果
     public int minusAndGet(int i) {
-        return value.addAndGet(-i);
+        value -= i;
+        return value;
     }
-
-    // Use synchronized
-    // private int value = 0;
-    //
-    // public int getValue() {
-    //     return value;
-    // }
-    //
-    // public synchronized int addAndGet(int i) {
-    //     value += i;
-    //     return value;
-    // }
-    //
-    // public synchronized int minusAndGet(int i) {
-    //     value -= i;
-    //     return value;
-    // }
 }
