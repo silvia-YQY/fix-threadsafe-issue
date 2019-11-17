@@ -1,23 +1,35 @@
 package com.github.hcsp.multithread;
 
-import java.util.concurrent.atomic.AtomicInteger;
+
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Counter {
-    private AtomicInteger value = new AtomicInteger(0);
+    private int value = 0;
+    private ReentrantLock lock = new ReentrantLock();
 
     public int getValue() {
-        return value.get();
+        return value;
     }
 
     // 加上一个整数i，并返回加之后的结果
     public int addAndGet(int i) {
-        value.addAndGet(i);
-        return value.get();
+        try {
+            lock.lock();
+            value += 1;
+            return value;
+        } finally {
+            lock.unlock();
+        }
     }
 
     // 减去一个整数i，并返回减之后的结果
     public int minusAndGet(int i) {
-        value.addAndGet(-i);
-        return value.get();
+        try {
+            lock.lock();
+            value -= 1;
+            return value;
+        } finally {
+            lock.unlock();
+        }
     }
 }
