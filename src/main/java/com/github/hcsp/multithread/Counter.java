@@ -18,7 +18,7 @@ public class Counter {
             value += i;
             return value;
         } finally {
-            lock.unlock();;
+            lock.unlock();
         }
     }
 
