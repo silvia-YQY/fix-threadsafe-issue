@@ -8,13 +8,13 @@ public class Counter {
     }
 
     // 加上一个整数i，并返回加之后的结果
-    public synchronized int addAndGet(int i) {
+    public int addAndGet(int i) {
         value += i;
         return value;
     }
 
     // 减去一个整数i，并返回减之后的结果
-    public synchronized int minusAndGet(int i) {
+    public int minusAndGet(int i) {
         value -= i;
         return value;
     }
